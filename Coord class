@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace snake_game
+{
+    internal class coord
+    {
+        private int x;
+        private int y;
+
+        public int X {get { return x; } }
+
+        public int Y {get { return y; } }
+
+        public coord(int x , int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
+                return false;
+
+            coord other = (coord)obj;
+            return x == other.x && y == other.y;
+        }
+        public void ApplyMovementDirection(direction direction)
+        {
+            switch (direction)
+            {
+                case direction.left:
+                    x--;
+                    break;
+                case direction.right:
+                    x++;
+                    break;
+                case direction.up:
+                    y--;
+                    break;
+                case direction.down:
+                    y++;
+                    break;
+
+            }
+        }
+    }
+}
